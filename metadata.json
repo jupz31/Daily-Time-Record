@@ -1,0 +1,8 @@
+{
+  "name": "QR Code Daily Time Record",
+  "description": "A web application to generate QR codes for employees and record their daily time-in and time-out by scanning the QR code. The recorded data can be exported to a CSV file.",
+  "requestFramePermissions": [
+    "camera",
+    "geolocation"
+  ]
+}

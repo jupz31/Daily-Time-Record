@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>QR Code DTR System</title>
+    <link rel="manifest" href="/manifest.json" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+             animation: {
+              'fade-in-down': 'fade-in-down 0.5s ease-out forwards',
+            },
+            keyframes: {
+              'fade-in-down': {
+                'from': { opacity: '0', transform: 'translateY(-1rem)' },
+                'to': { opacity: '1', transform: 'translateY(0)' },
+              },
+            }
+          }
+        }
+      }
+
+      // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+      if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark')
+      } else {
+        document.documentElement.classList.remove('dark')
+      }
+    </script>
+<style>
+  @keyframes highlight-fade {
+    from { background-color: #dcfce7; } /* Tailwind green-100 */
+    to { background-color: transparent; }
+  }
+  .highlight-scan {
+    animation: highlight-fade 3s ease-out;
+  }
+  @keyframes dark-highlight-fade {
+    from { background-color: #14532d; } /* Tailwind green-900 */
+    to { background-color: transparent; }
+  }
+  .dark .highlight-scan {
+    animation: dark-highlight-fade 3s ease-out;
+  }
+</style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "qrcode": "https://aistudiocdn.com/qrcode@^1.5.4",
+    "jsqr": "https://aistudiocdn.com/jsqr@^1.4.0",
+    "jspdf": "https://aistudiocdn.com/jspdf@^3.0.3",
+    "jspdf-autotable": "https://aistudiocdn.com/jspdf-autotable@^5.0.2"
+  }
+}
+</script>
+</head>
+  <body class="font-sans antialiased bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
